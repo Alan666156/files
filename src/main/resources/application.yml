@@ -1,0 +1,67 @@
+server:
+  port: 9999
+#  tomcat:
+#    basedir: .
+#    accesslog:
+#      enabled: true
+#      pattern: "%t %a \"%r\" %s (%D ms)"
+spring:
+  application:
+    name: files
+  datasource:
+    url: jdbc:log4jdbc:mysql://10.100.200.47:3306/files?characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: root123456
+    driverClassName: net.sf.log4jdbc.DriverSpy
+    tomcat:
+      test-on-borrow: true
+      max-active: 50
+      validation-query: select 1 from dual
+      max-idle: 5
+      min-idle: 2
+      test-while-idle: true
+      initial-size: 2
+      test-on-return: true
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  redis:
+    host: 172.16.235.131
+    password:
+    database: 12
+    port: 6379
+    pool:
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+  http:
+    multipart:
+      max-file-size: -1
+      max-request-size: -1
+      location: c:/data/tmptomcatdir
+logging:
+  config: classpath:log4j2.xml
+file:
+  dir: c:/data/files
+  tmpDir: c:/data/tmpFiles
+  
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${random.int}
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://10.100.200.46:3333/eureka/
+
+endpoints:
+  cors:
+    allowed-origins: "*"
+    allowed-methods: GET,POST
+    
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 300000
+spring.cloud.loadbalancer.retry.enabled: true
+ribbonReadTimeout: 60000
+ribbon.ConnectTimeout: 60000
