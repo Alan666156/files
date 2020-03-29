@@ -9,10 +9,10 @@ spring:
   application:
     name: files
   datasource:
-    url: jdbc:log4jdbc:mysql://10.100.200.47:3306/files?characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
+    url: jdbc:log4jdbc:mysql://localhost:3306/files?characterEncoding=utf8&allowMultiQueries=true&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: root123456
-    driverClassName: net.sf.log4jdbc.DriverSpy
+    password: root123
+    driver-class-name: net.sf.log4jdbc.DriverSpy
     tomcat:
       test-on-borrow: true
       max-active: 50
@@ -28,16 +28,12 @@ spring:
     hibernate:
       ddl-auto: update
   redis:
-    host: 172.16.235.131
+    host: 192.168.1.1
+    port: 6381
     password:
     database: 12
-    port: 6379
-    pool:
-      max-idle: 8
-      min-idle: 0
-      max-active: 8
-      max-wait: -1
-  http:
+
+  servlet:
     multipart:
       max-file-size: -1
       max-request-size: -1
@@ -47,19 +43,19 @@ logging:
 file:
   dir: c:/data/files
   tmpDir: c:/data/tmpFiles
-  
 eureka:
   instance:
     instanceId: ${spring.application.name}:${random.int}
     prefer-ip-address: true
   client:
     serviceUrl:
-      defaultZone: http://10.100.200.46:3333/eureka/
+      defaultZone: http://localhost:3333/eureka/
 
-endpoints:
-  cors:
-    allowed-origins: "*"
-    allowed-methods: GET,POST
+management:
+  endpoints:
+    cors:
+      allowed-origins: "*"
+      allowed-methods: GET,POST
     
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 300000
 spring.cloud.loadbalancer.retry.enabled: true

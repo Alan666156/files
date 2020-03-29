@@ -11,12 +11,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.cloud.netflix.feign.EnableFeignClients;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.io.Serializable;
 
 /**
  * 启动入口
@@ -35,15 +37,15 @@ public class FilesApplication implements CommandLineRunner{
 	private RedisService redisService;
 	
 	@Bean
-	public RedisTemplate<String, ?> redisTemplate(RedisConnectionFactory connectionFactory) {
-		RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+	public RedisTemplate<Serializable, ?> redisTemplate(RedisConnectionFactory connectionFactory) {
+		RedisTemplate<Serializable, Object> template = new RedisTemplate<Serializable, Object>();
 		template.setConnectionFactory(connectionFactory);
 		setRedisSerializer(template);
 		template.afterPropertiesSet();
 		return template;
 	}
 
-	private void setRedisSerializer(RedisTemplate<String, ?> template) {
+	private void setRedisSerializer(RedisTemplate<Serializable, ?> template) {
 		Jackson2JsonRedisSerializer<Object> jackson2JsonRedisSerializer = new Jackson2JsonRedisSerializer<Object>(Object.class);
 		ObjectMapper om = new ObjectMapper();
 		om.setVisibility(PropertyAccessor.ALL, Visibility.ANY);

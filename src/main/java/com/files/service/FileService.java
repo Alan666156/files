@@ -30,7 +30,7 @@ import java.util.UUID;
  */
 @Slf4j
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class FileService extends AbstractFileService {
 	public static final String DEFAULT_GROUP = "tmp";
 

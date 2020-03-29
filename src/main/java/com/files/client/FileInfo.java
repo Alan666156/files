@@ -10,10 +10,18 @@ import java.io.Serializable;
 @Data
 public class FileInfo implements Serializable{
 	private static final long serialVersionUID = 244908327847257915L;
-	
-	private String group;// 文件所在的分组
-	private String fileName;// 保存在文件服务器的文件名
-	private String orgFileName;// 文件上传时的原名
+	/**
+	 * 文件所在的分组
+	 */
+	private String group;
+	/**
+	 * 保存在文件服务器的文件名
+	 */
+	private String fileName;
+	/**
+	 *  文件上传时的原名
+	 */
+	private String orgFileName;
 	private Long updateTime;
 
 	public FileInfo() {

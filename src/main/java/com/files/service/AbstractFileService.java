@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public abstract class AbstractFileService {
 
 	private static final String DEFAULT_FUNC = "0";

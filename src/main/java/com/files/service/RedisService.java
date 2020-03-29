@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 public final class RedisService {
 
     @Autowired
-    private RedisTemplate<Serializable, Object> redisTemplate;  
+    private RedisTemplate<Serializable, Object> redisTemplate;
   
 	/**
 	 * 批量删除对应的value

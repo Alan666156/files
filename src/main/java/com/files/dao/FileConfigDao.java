@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface FileConfigDao extends JpaRepository<FileConfig, Long> {
 	
-	public List<FileConfig> findByAppId(String appid);
+	List<FileConfig> findByAppId(String appid);
 }

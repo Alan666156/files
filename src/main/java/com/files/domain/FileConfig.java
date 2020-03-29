@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "file_config")
 @EntityListeners(AuditingEntityListener.class)
-public class FileConfig extends AbstractPersistable<Long> implements Cloneable{
+public class FileConfig extends AbstractPersistable<Long>{
 	
 	/**
 	 * 
