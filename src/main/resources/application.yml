@@ -28,8 +28,8 @@ spring:
     hibernate:
       ddl-auto: update
   redis:
-    host: 192.168.1.1
-    port: 6381
+    host: localhost
+    port: 6379
     password:
     database: 12
 
@@ -41,8 +41,8 @@ spring:
 logging:
   config: classpath:log4j2.xml
 file:
-  dir: c:/data/files
-  tmpDir: c:/data/tmpFiles
+  dir: e:/data/files
+  tmpDir: e:/data/tmpFiles
 eureka:
   instance:
     instanceId: ${spring.application.name}:${random.int}
