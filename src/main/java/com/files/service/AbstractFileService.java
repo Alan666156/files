@@ -3,25 +3,30 @@ package com.files.service;
 import com.files.dao.FileConfigDao;
 import com.files.domain.FileConfig;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ *  文件处理service
+ * @author fhx
+ * @date 2018年12月17日
+ */
 @Slf4j
 @Service
 @Transactional(rollbackFor = Exception.class)
 public abstract class AbstractFileService {
 
 	private static final String DEFAULT_FUNC = "0";
-	@Autowired
+	@Resource
 	private FileConfigDao fileConfigDao;
-	@Autowired
+	@Resource
 	private RedisService redisService;
 
 	@Value("${file.tmpDir}")
@@ -31,7 +36,7 @@ public abstract class AbstractFileService {
 
 	/**
 	 * 获取目标应用的所有配置信息集合，key为配置种类，value为配置信息类FileConfig
-	 * 
+	 *
 	 * @param appId
 	 *            应用标识
 	 * @return 目标应用的所有配置信息集合
@@ -48,7 +53,7 @@ public abstract class AbstractFileService {
 
 	/**
 	 * 获取目标应用的默认配置
-	 * 
+	 *
 	 * @param appId
 	 *            应用标识
 	 * @return 默认配置信息
@@ -59,7 +64,7 @@ public abstract class AbstractFileService {
 
 	/**
 	 * 获取目标应用的目标配置，当配置名(func)为空时，查询默认配置
-	 * 
+	 *
 	 * @param appId
 	 *            应用标识
 	 * @param func

@@ -2,6 +2,11 @@ package com.files.config;
 
 import lombok.Data;
 
+/**
+ *  文件配置
+ * @author fhx
+ * @date 2018年12月17日
+ */
 @Data
 public class FileConfigInfo {
 	private String func;

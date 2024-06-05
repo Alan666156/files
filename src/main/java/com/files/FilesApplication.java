@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.files.dao.FileConfigDao;
 import com.files.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+import javax.annotation.Resource;
 import java.io.Serializable;
 
 /**
@@ -31,9 +31,9 @@ import java.io.Serializable;
 @SpringBootApplication
 public class FilesApplication implements CommandLineRunner{
 	
-	@Autowired
+	@Resource
 	private FileConfigDao fileConfigDao;
-	@Autowired
+	@Resource
 	private RedisService redisService;
 	
 	@Bean

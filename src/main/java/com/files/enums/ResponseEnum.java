@@ -2,7 +2,8 @@ package com.files.enums;
 
 /**
  * 返回响应状态枚举
- *
+ * @author fhx
+ * @date 2018年12月17日
  */
 public enum ResponseEnum {
 	

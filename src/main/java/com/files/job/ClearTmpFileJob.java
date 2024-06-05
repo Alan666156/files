@@ -2,16 +2,23 @@ package com.files.job;
 
 import com.files.service.FileService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
+
+/**
+ *  定时任务
+ * @author fhx
+ * @date 2018年12月17日
+ */
 @Slf4j
 @Service
 public class ClearTmpFileJob {
 
-	@Autowired
+	@Resource
 	private FileService fileService;
+
 	/**
 	 * 定时任务
 	 */

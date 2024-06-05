@@ -7,9 +7,9 @@ import com.files.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -21,9 +21,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @RestController
 public class FileClientController {
-	@Autowired
+
+	@Resource
 	private FileService tmpFileService;
-	@Autowired
+
+	@Resource
 	private Redisson redisson;
 
 	/**

@@ -4,7 +4,6 @@ import com.files.domain.FileConfig;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartException;
@@ -12,6 +11,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.multipart.support.StandardMultipartHttpServletRequest;
 import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 @Slf4j
 @Component
 public class MyMultipartResolver extends StandardServletMultipartResolver {
-	@Autowired
+	@Resource
 	private FileService fileSrv;
 	
 	public MyMultipartResolver() {

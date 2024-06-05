@@ -23,6 +23,7 @@ public class DateUtils {
 	public static final String FORMAT_DATE_YYYY_MM_DD = "yyyy-MM-dd";
 	/**yyyyMMddHHmmss*/
 	public static final String FORMAT_DATE_YYYYMMDDHHMMSS = "yyyyMMddHHmmss";
+	/**yyyyMMdd*/
 	public static final String FORMAT_DATE_YYYYMMDD = "yyyyMMdd";
 	/**yyyy年MM月dd日*/
 	public static final String FORMAT_DATE_ZHONGWEN = "yyyy年MM月dd日";
